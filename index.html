@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samar Udawat — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f0eb;
+    --accent: #8B3A3A;
+    --accent-light: #c2614f;
+    --gold: #c9a84c;
+    --muted: #3a3a3a;
+    --text-dim: #999;
+    --toran-brown: #7a3b2e;
+    --mandir-saffron: #d4813a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.18em; color: var(--white); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.2rem; }
+  .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 0 3rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(139,58,58,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 20% 80%, rgba(122,59,46,0.12) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-tag {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent-light); margin-bottom: 1rem;
+  }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(6rem, 16vw, 14rem);
+    line-height: 0.88; letter-spacing: -0.02em;
+    color: var(--white);
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-sub {
+    margin-top: 2rem; max-width: 480px;
+    font-size: 0.9rem; line-height: 1.75; color: rgba(245,240,235,0.6);
+  }
+  .hero-handle {
+    margin-top: 2.5rem; display: inline-block;
+    font-size: 0.78rem; letter-spacing: 0.18em;
+    color: var(--text-dim); border-bottom: 1px solid var(--muted);
+    padding-bottom: 0.3rem; text-transform: uppercase;
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2rem; right: 3rem;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dim); writing-mode: vertical-rl;
+    animation: fadeUpDown 2s ease-in-out infinite;
+  }
+  @keyframes fadeUpDown { 0%,100%{transform:translateY(0);opacity:0.4} 50%{transform:translateY(-6px);opacity:1} }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 3rem; }
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--accent-light); margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .divider {
+    width: 40px; height: 2px; background: var(--accent);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+  .about-text { font-size: 1.05rem; line-height: 1.85; color: rgba(245,240,235,0.72); }
+  .about-visual {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .about-photo {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 48% 42%;
+    filter: contrast(1.08) saturate(0.9);
+  }
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0) 45%, rgba(10,10,10,0.68) 100%);
+    pointer-events: none;
+  }
+  .about-photo-caption {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 1;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,0.72);
+  }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.8rem 1.5rem;
+    background: rgba(255,255,255,0.02);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem;
+    color: var(--accent); line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.4rem; }
+
+  /* ── PROJECT WRAPPER ── */
+  .project-section {
+    padding: 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ════════ TORAN ════════ */
+  .toran-hero {
+    min-height: 90vh; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 5rem 4rem;
+    background: var(--black);
+  }
+  .toran-bg-text {
+    position: absolute; top: -2rem; left: -1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(14rem, 28vw, 26rem);
+    line-height: 1; color: rgba(139,58,58,0.07);
+    pointer-events: none; user-select: none; letter-spacing: -0.04em;
+  }
+  .toran-logo-area {
+    position: absolute; top: 50%; right: 6%; transform: translateY(-50%);
+    width: clamp(300px, 34vw, 560px);
+  }
+  .toran-logo-svg { width: 100%; opacity: 0.88; }
+  .toran-logo-image {
+    width: 100%;
+    display: block;
+    opacity: 0.9;
+    filter: drop-shadow(0 28px 60px rgba(0,0,0,0.38));
+  }
+  .toran-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--accent-light); margin-bottom: 1rem; position: relative; z-index: 2;
+  }
+  .toran-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.9; letter-spacing: 0.04em;
+    position: relative; z-index: 2;
+  }
+  .toran-tagline {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 1.2rem; color: rgba(245,240,235,0.5);
+    margin-top: 0.8rem; letter-spacing: 0.08em;
+    position: relative; z-index: 2;
+  }
+  .toran-stripe {
+    width: 100%; overflow: hidden;
+    background: var(--accent); padding: 0.7rem 0;
+    display: flex;
+  }
+  .toran-stripe-inner {
+    display: flex; gap: 3rem; animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+  .toran-stripe-inner span {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(245,240,235,0.9); flex-shrink: 0;
+  }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .toran-body { padding: 5rem 4rem; background: var(--black); }
+
+  .toran-overview {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; margin-bottom: 5rem; align-items: start;
+  }
+  .toran-overview-text { }
+  .toran-overview-text p { font-size: 1rem; line-height: 1.9; color: rgba(245,240,235,0.68); margin-bottom: 1.2rem; }
+  .toran-pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .pill {
+    padding: 0.38rem 1rem; border: 1px solid rgba(139,58,58,0.4);
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-light); background: rgba(139,58,58,0.06);
+  }
+  .toran-roles {
+    border-left: 2px solid var(--accent);
+    padding-left: 2rem;
+  }
+  .toran-roles h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .role-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.5rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .role-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .role-info h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.3rem; }
+  .role-info p { font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; }
+
+  .toran-website-showcase {
+    margin: 0 0 5rem;
+  }
+  .toran-media-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.6rem;
+  }
+  .toran-media-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+  .toran-media-header p {
+    max-width: 420px;
+    color: var(--text-dim);
+    font-size: 0.86rem;
+    line-height: 1.7;
+  }
+  .toran-website-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(139,58,58,0.32);
+    background: rgba(255,255,255,0.025);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.35);
+  }
+  .toran-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    height: 42px;
+    padding: 0 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(10,10,10,0.92);
+  }
+  .toran-browser-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(194,97,79,0.7);
+  }
+  .toran-browser-label {
+    margin-left: 0.7rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,0.42);
+  }
+  .toran-website-frame video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #0f0f0f;
+  }
+  .toran-film-showcase {
+    margin: 0 0 5rem;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.7fr) 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .toran-film-copy h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .toran-film-copy p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    max-width: 520px;
+  }
+  .toran-film-frame {
+    overflow: hidden;
+    border: 1px solid rgba(139,58,58,0.32);
+    background: rgba(255,255,255,0.025);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.35);
+  }
+  .toran-film-frame video {
+    width: 100%;
+    max-height: 720px;
+    display: block;
+    object-fit: contain;
+    background: #050505;
+  }
+
+  /* Process panels */
+  .toran-process { margin-bottom: 5rem; }
+  .toran-process h2 { font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 3rem; }
+  .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,0.05); }
+  .process-card {
+    background: var(--black); padding: 2.5rem 2rem;
+    transition: background 0.3s;
+  }
+  .process-card:hover { background: rgba(139,58,58,0.08); }
+  .process-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 4rem;
+    color: rgba(139,58,58,0.25); line-height: 1; margin-bottom: 1rem;
+  }
+  .process-card h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.8rem; }
+  .process-card p { font-size: 0.82rem; line-height: 1.75; color: var(--text-dim); }
+
+  /* Deliverables */
+  .toran-deliverables { margin-bottom: 5rem; }
+  .toran-deliverables h2 { font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 3rem; }
+  .deliverable-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .deliverable-card {
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem; position: relative; overflow: hidden;
+  }
+  .deliverable-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--accent);
+  }
+  .deliverable-card h4 { font-size: 1rem; font-weight: 500; margin-bottom: 0.8rem; }
+  .deliverable-card p { font-size: 0.85rem; line-height: 1.75; color: var(--text-dim); }
+  .deliverable-badge {
+    display: inline-block; margin-bottom: 1rem;
+    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-light); background: rgba(139,58,58,0.1);
+    padding: 0.25rem 0.7rem;
+  }
+
+  /* Impact */
+  .toran-impact { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-bottom: 4rem; }
+  .impact-card {
+    background: rgba(139,58,58,0.08); border: 1px solid rgba(139,58,58,0.2);
+    padding: 2rem; text-align: center;
+  }
+  .impact-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem;
+    color: var(--accent); line-height: 1; display: block; margin-bottom: 0.4rem;
+  }
+  .impact-label { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* ════════ PUJA PATH ════════ */
+  .puja-hero {
+    min-height: 80vh; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 5rem 4rem;
+  }
+  .puja-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0e08 40%, #2a1208 100%);
+  }
+  .puja-mandala {
+    position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+    width: 600px; height: 600px; opacity: 0.06;
+  }
+  .puja-logo-mark {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(220px, 26vw, 390px);
+    z-index: 1;
+    padding: 1.2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,129,58,0.24);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.35);
+  }
+  .puja-logo-mark img {
+    width: 100%;
+    display: block;
+  }
+  .puja-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--mandir-saffron); margin-bottom: 1rem; position: relative; z-index: 2;
+  }
+  .puja-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.9; position: relative; z-index: 2;
+  }
+  .puja-title .hindi { color: var(--mandir-saffron); }
+  .puja-subtitle {
+    margin-top: 1rem; max-width: 500px;
+    font-size: 0.88rem; line-height: 1.8; color: rgba(245,240,235,0.55);
+    position: relative; z-index: 2;
+  }
+  .puja-stripe {
+    width: 100%; overflow: hidden;
+    background: linear-gradient(90deg, var(--mandir-saffron), #b8651a, var(--mandir-saffron));
+    padding: 0.65rem 0;
+  }
+  .puja-stripe-inner {
+    display: flex; gap: 3rem; animation: marquee 25s linear infinite;
+    white-space: nowrap;
+  }
+  .puja-stripe-inner span {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(10,10,10,0.85); flex-shrink: 0;
+  }
+
+  .puja-body { padding: 5rem 4rem; background: var(--black); }
+
+  /* Features grid */
+  .puja-overview { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; margin-bottom: 5rem; align-items: start; }
+  .puja-overview p { font-size: 1rem; line-height: 1.9; color: rgba(245,240,235,0.68); margin-bottom: 1.2rem; }
+  .puja-features { }
+  .puja-features h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 2rem; }
+  .feature-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .feature-item:last-child { border-bottom: none; }
+  .feature-dot { width: 8px; height: 8px; background: var(--mandir-saffron); border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem; }
+  .feature-item h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .feature-item p { font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* Design contribution */
+  .puja-contribution { margin-bottom: 5rem; }
+  .puja-contribution > h2 { font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 3rem; }
+  .contribution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(212,129,58,0.1); }
+  .contrib-card {
+    background: var(--black); padding: 3rem 2.5rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .contrib-card:hover { background: rgba(212,129,58,0.04); border-color: var(--mandir-saffron); }
+  .contrib-card h4 { font-size: 1.05rem; font-weight: 500; margin-bottom: 1rem; }
+  .contrib-card p { font-size: 0.85rem; line-height: 1.8; color: var(--text-dim); }
+
+  /* Design system */
+  .design-system { margin-bottom: 5rem; }
+  .design-system h2 { font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 3rem; }
+  .puja-board-section {
+    margin-bottom: 5rem;
+  }
+  .puja-board-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  .puja-board-section > p {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.75;
+    max-width: 680px;
+    margin-bottom: 2rem;
+  }
+  .puja-board-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .puja-board-card {
+    overflow: hidden;
+    border: 1px solid rgba(212,129,58,0.22);
+    background: rgba(255,255,255,0.03);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+  }
+  .puja-board-card img {
+    width: 100%;
+    display: block;
+    background: #f7f7f7;
+  }
+  .puja-board-caption {
+    padding: 1rem 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,0.56);
+  }
+  .ds-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 2rem; }
+  .ds-card { border: 1px solid rgba(255,255,255,0.07); padding: 1.5rem; }
+  .ds-card .swatch { height: 60px; margin-bottom: 1rem; }
+  .ds-card .color-name { font-size: 0.78rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .ds-card .color-hex { font-size: 0.7rem; color: var(--text-dim); }
+
+  .puja-icon-row {
+    display: grid; grid-template-columns: repeat(6,1fr); gap: 1rem; margin-top: 3rem;
+  }
+  .icon-showcase {
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 1.5rem 1rem; text-align: center;
+  }
+  .icon-showcase .icon-emoji { font-size: 2rem; display: block; margin-bottom: 0.6rem; }
+  .icon-showcase .icon-name { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* UX process */
+  .puja-process { margin-bottom: 4rem; }
+  .puja-process h2 { font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 3rem; }
+  .ux-flow {
+    display: grid; grid-template-columns: repeat(5,1fr); gap: 0;
+    background: rgba(255,255,255,0.03); position: relative;
+  }
+  .ux-step {
+    padding: 2rem 1.5rem; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .ux-step:last-child { border-right: none; }
+  .ux-step .step-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem;
+    color: rgba(212,129,58,0.3); line-height: 1; display: block;
+  }
+  .ux-step h5 { font-size: 0.82rem; font-weight: 500; margin: 0.6rem 0 0.5rem; }
+  .ux-step p { font-size: 0.73rem; color: var(--text-dim); line-height: 1.6; }
+  .ux-arrow {
+    position: absolute; right: -12px; top: 50%;
+    transform: translateY(-50%);
+    width: 24px; height: 24px;
+    background: var(--black); border: 1px solid rgba(212,129,58,0.3);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: var(--mandir-saffron); z-index: 2;
+  }
+
+  /* Puja impact */
+  .puja-impact { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+  .puja-impact-card {
+    background: rgba(212,129,58,0.06); border: 1px solid rgba(212,129,58,0.18);
+    padding: 2rem; text-align: center;
+  }
+  .puja-impact-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem;
+    color: var(--mandir-saffron); line-height: 1; display: block; margin-bottom: 0.4rem;
+  }
+  .puja-impact-label { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* ── OTHER PROJECTS ── */
+  .other-section { padding: 6rem 4rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .other-section h2 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 3rem; }
+  .other-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+  .other-card {
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2.5rem 2rem; position: relative; overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .other-card-wide { grid-column: span 2; }
+  .other-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.18); }
+  .other-card-tag {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 1rem;
+  }
+  .other-card h4 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.8rem; }
+  .other-card p { font-size: 0.83rem; line-height: 1.75; color: var(--text-dim); }
+  .other-card-media {
+    display: grid;
+    gap: 0.8rem;
+    margin: -0.8rem -0.4rem 1.5rem;
+  }
+  .other-card-media.split { grid-template-columns: 0.9fr 1fr; align-items: stretch; }
+  .other-card-media.organic { grid-template-columns: 1.25fr 0.75fr; align-items: stretch; }
+  .other-card-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    display: block;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+  }
+  .other-card-media .poster-img { object-position: center top; }
+  .other-card-media .logo-img {
+    object-fit: contain;
+    padding: 1.5rem;
+    background: #f5f0eb;
+  }
+  .other-card-media-stack {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .other-card-media-stack img { min-height: 0; }
+  .other-card-media-stack .logo-img { height: 145px; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 5rem 4rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9; color: rgba(255,255,255,0.07);
+  }
+  .footer-contact { text-align: right; }
+  .footer-contact p { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0.5rem; }
+  .footer-contact a { color: var(--accent-light); text-decoration: none; font-size: 0.9rem; }
+  .footer-handle { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.8rem; }
+
+  /* ── UTILITIES ── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 0 1.5rem 4rem; }
+    section, .toran-body, .puja-body, .other-section { padding: 4rem 1.5rem; }
+    .about-grid, .toran-overview, .puja-overview, .contribution-grid, .deliverable-row { grid-template-columns: 1fr; gap: 3rem; }
+    .about-visual { grid-template-columns: 1fr; }
+    .about-photo { min-height: 480px; }
+    .toran-media-header { display: block; }
+    .toran-media-header p { margin-top: 1rem; }
+    .toran-film-showcase { grid-template-columns: 1fr; }
+    .puja-logo-mark {
+      right: -12%;
+      top: 34%;
+      width: 70vw;
+      opacity: 0.18;
+      padding: 0.8rem;
+    }
+    .process-grid, .ux-flow { grid-template-columns: 1fr; }
+    .toran-impact, .puja-impact { grid-template-columns: 1fr 1fr; }
+    .ds-grid { grid-template-columns: 1fr 1fr; }
+    .puja-icon-row { grid-template-columns: repeat(3,1fr); }
+    .other-grid { grid-template-columns: 1fr; }
+    .other-card-wide { grid-column: span 1; }
+    .other-card-media.split, .other-card-media.organic { grid-template-columns: 1fr; }
+    .other-card-media img { min-height: 260px; }
+    .toran-logo-area {
+      display: block;
+      top: 38%;
+      right: -18%;
+      width: 82vw;
+      opacity: 0.24;
+    }
+    .footer { flex-direction: column; gap: 2rem; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Samar.</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#toran">Toran</a>
+    <a href="#pujapath">Puja Path</a>
+    <a href="#other">More Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <p class="hero-tag">Design Portfolio — 2025</p>
+  <h1 class="hero-name">SAM<span>A</span>R<br>UDAWAT</h1>
+  <p class="hero-sub">A design aspirant mesmerized by the world of products and objects that shape daily lives. Striving to create work that is ergonomic, empathy-driven, and supported by strong visual storytelling.</p>
+  <span class="hero-handle">@_samar.creates_</span>
+  <div class="scroll-hint">Scroll to explore</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-in">
+    <p class="section-label">Who I am</p>
+    <h2 class="section-title">Hello, I'm Samar</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p>I understand forms, space, and users' needs. My work spans branding, digital platforms, UI/UX design, and product design — each project a journey toward empathy-driven solutions.</p>
+      <p style="margin-top:1rem">From leading the design and production of a Gen-Z handicrafts platform to architecting the visual language of a devotional super-app, I approach every brief as a system-thinking challenge rooted in cultural understanding.</p>
+    </div>
+    <div class="about-visual">
+      <figure class="about-photo">
+        <img src="./assets/Samarstudio.jpg" alt="Samar sketching product ideas at his studio desk">
+        <figcaption class="about-photo-caption">Studio process</figcaption>
+      </figure>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years of Practice</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Live Products</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Curiosity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TORAN ════════════ -->
+<div class="project-section" id="toran">
+
+  <!-- Hero Banner -->
+  <div class="toran-hero">
+    <div class="toran-bg-text">TORAN</div>
+    <div class="toran-logo-area">
+      <img class="toran-logo-image" src="./assets/removed-background.png" alt="Toran logo with hands holding a braided toran">
+    </div>
+    <p class="toran-eyebrow">Featured Project — Branding & Digital Platform</p>
+    <h2 class="toran-title">TORAN</h2>
+    <p class="toran-tagline">— Connecting People to Craft</p>
+  </div>
+
+  <!-- Marquee -->
+  <div class="toran-stripe">
+    <div class="toran-stripe-inner">
+      <span>Brand Identity</span><span>·</span>
+      <span>Web Design</span><span>·</span>
+      <span>Project Management</span><span>·</span>
+      <span>AD Film Direction</span><span>·</span>
+      <span>Indian Handicrafts</span><span>·</span>
+      <span>Gen-Z Platform</span><span>·</span>
+      <span>Kolhapuri Chappals</span><span>·</span>
+      <span>Brand Identity</span><span>·</span>
+      <span>Web Design</span><span>·</span>
+      <span>Project Management</span><span>·</span>
+      <span>AD Film Direction</span><span>·</span>
+      <span>Indian Handicrafts</span><span>·</span>
+      <span>Gen-Z Platform</span><span>·</span>
+      <span>Kolhapuri Chappals</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="toran-body">
+
+    <!-- Impact numbers -->
+    <div class="toran-impact fade-in">
+      <div class="impact-card">
+        <span class="impact-num">3</span>
+        <div class="impact-label">Roles Held</div>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">1</span>
+        <div class="impact-label">AD Film Directed</div>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">∞</span>
+        <div class="impact-label">Artisan Stories Told</div>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="toran-overview" style="margin-top:4rem">
+      <div class="toran-overview-text fade-in">
+        <p class="section-label">Project Overview</p>
+        <h3 class="section-title" style="font-size:2rem; margin-bottom:1.5rem">What is Toran?</h3>
+        <div class="divider"></div>
+        <p>Toran began as a platform for authentic Kolhapuri chappals and is now positioned to grow into a broader Indian handicrafts marketplace.</p>
+        <p>The brand connects skilled artisans with <strong>Gen Z consumers</strong> looking for products with craft, culture, and a clear story.</p>
+        <div class="toran-pill-row">
+          <span class="pill">Handicrafts</span>
+          <span class="pill">D2C Platform</span>
+          <span class="pill">Gen-Z Market</span>
+          <span class="pill">Indian Heritage</span>
+          <span class="pill">Artisan-First</span>
+        </div>
+      </div>
+      <div class="toran-roles fade-in">
+        <h3>My Role</h3>
+        <div class="role-item">
+          <div class="role-info">
+            <h4>Project Management</h4>
+            <p>Coordinated timelines, deliverables, and team communication while keeping the brand consistent across touchpoints.</p>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-info">
+            <h4>Head Web Designer</h4>
+            <p>Led the website design from structure and wireframes to final UI, balancing a Gen-Z friendly experience with the artisan story.</p>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-info">
+            <h4>Director of Photography — AD Films</h4>
+            <p>Directed the ad film's visual language, focusing on craft details, warm lighting, and product storytelling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website Showcase -->
+    <div class="toran-website-showcase fade-in">
+      <div class="toran-media-header">
+        <div>
+        <p class="section-label">Website Design</p>
+          <h2>Toran digital platform</h2>
+        </div>
+        <p>A website preview showing the brand identity, product story, and craft-first visual direction in one flow.</p>
+      </div>
+      <div class="toran-website-frame">
+        <div class="toran-browser-bar">
+          <span class="toran-browser-dot"></span>
+          <span class="toran-browser-dot"></span>
+          <span class="toran-browser-dot"></span>
+          <span class="toran-browser-label">Website preview</span>
+        </div>
+        <video src="./assets/lv_0_20260406203516.mov" autoplay muted loop playsinline controls></video>
+      </div>
+    </div>
+
+    <!-- AD Film -->
+    <div class="toran-film-showcase fade-in">
+      <div class="toran-film-copy">
+        <p class="section-label">AD Film Direction</p>
+        <h2>Toran campaign film</h2>
+        <p>A short film shaped around product detail, craft texture, and a warm rhythm for a younger digital audience.</p>
+      </div>
+      <div class="toran-film-frame">
+        <video src="./assets/1775901549985522.mp4" autoplay muted loop playsinline controls></video>
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div class="toran-process fade-in">
+      <h2>Design Process</h2>
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-num">01</div>
+          <h4>Brand Discovery</h4>
+          <p>Researched Kolhapuri craft, Gen-Z shopping behavior, and the gap between authentic products and modern presentation.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">02</div>
+          <h4>Identity Design</h4>
+          <p>Built the visual identity around hands, a braided toran, and Devanagari script to express connection and cultural pride.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">03</div>
+          <h4>Web Architecture</h4>
+          <p>Structured the website around artisan stories, product photography, and a direct mobile-friendly purchase flow.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">04</div>
+          <h4>AD Film Direction</h4>
+          <p>Directed close-up craft shots, warm tones, and slower pacing to signal authenticity.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">05</div>
+          <h4>Marketing Collateral</h4>
+          <p>Designed posters and digital assets with bold type, clear product imagery, and direct action.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">06</div>
+          <h4>Scale Strategy</h4>
+          <p>Created a modular system so Toran can expand into more craft categories without diluting the brand.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deliverables -->
+    <div class="toran-deliverables fade-in">
+      <h2>Key Deliverables</h2>
+      <div class="deliverable-row">
+        <div class="deliverable-card">
+          <span class="deliverable-badge">Brand Identity</span>
+          <h4>Logo & Visual System</h4>
+          <p>A bilingual logo system connecting modern commerce with Indian craft tradition.</p>
+        </div>
+        <div class="deliverable-card">
+          <span class="deliverable-badge">Digital Product</span>
+          <h4>Website Design (Head Designer)</h4>
+          <p>Website structure, visual design, and responsive layouts built around product and artisan storytelling.</p>
+        </div>
+        <div class="deliverable-card">
+          <span class="deliverable-badge">Film & Content</span>
+          <h4>AD Film — Director of Photography</h4>
+          <p>Directed a visual language focused on texture, heritage, and handcrafted detail.</p>
+        </div>
+        <div class="deliverable-card">
+          <span class="deliverable-badge">Marketing</span>
+          <h4>Retail & Digital Marketing Assets</h4>
+          <p>Promotional assets designed for shelf visibility, digital reach, and quick product understanding.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════ PUJA PATH (SHRI MANDIR) ════════════ -->
+<div class="project-section" id="pujapath">
+
+  <!-- Hero -->
+  <div class="puja-hero">
+    <div class="puja-gradient"></div>
+    <!-- Mandala SVG decoration -->
+    <svg class="puja-mandala" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="240" stroke="white" stroke-width="1"/>
+      <circle cx="250" cy="250" r="200" stroke="white" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="160" stroke="white" stroke-width="1"/>
+      <circle cx="250" cy="250" r="120" stroke="white" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="80" stroke="white" stroke-width="1"/>
+      <circle cx="250" cy="250" r="40" stroke="white" stroke-width="0.5"/>
+      <line x1="250" y1="10" x2="250" y2="490" stroke="white" stroke-width="0.5"/>
+      <line x1="10" y1="250" x2="490" y2="250" stroke="white" stroke-width="0.5"/>
+      <line x1="80" y1="80" x2="420" y2="420" stroke="white" stroke-width="0.5"/>
+      <line x1="420" y1="80" x2="80" y2="420" stroke="white" stroke-width="0.5"/>
+      <line x1="10" y1="150" x2="490" y2="350" stroke="white" stroke-width="0.3"/>
+      <line x1="10" y1="350" x2="490" y2="150" stroke="white" stroke-width="0.3"/>
+      <line x1="150" y1="10" x2="350" y2="490" stroke="white" stroke-width="0.3"/>
+      <line x1="350" y1="10" x2="150" y2="490" stroke="white" stroke-width="0.3"/>
+      <text x="250" y="270" text-anchor="middle" font-size="60" fill="white" font-family="serif">ॐ</text>
+    </svg>
+    <div class="puja-logo-mark">
+      <svg viewBox="0 0 320 360" role="img" aria-label="Puja Path logo with diya flame inside a letter P" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="pujaLogoGold" x1="30" y1="20" x2="290" y2="330" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ffbc17"/>
+            <stop offset="0.52" stop-color="#f6a900"/>
+            <stop offset="1" stop-color="#ffe789"/>
+          </linearGradient>
+          <linearGradient id="pujaLogoFlame" x1="150" y1="70" x2="190" y2="260" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff8c9"/>
+            <stop offset="1" stop-color="#ffbd17"/>
+          </linearGradient>
+        </defs>
+        <text x="22" y="326" font-family="Georgia, serif" font-size="340" font-weight="700" fill="url(#pujaLogoGold)">P</text>
+        <path d="M166 103C208 147 223 192 207 231C196 260 171 273 145 264C120 255 107 231 112 203C118 170 145 150 166 103Z" fill="#fff4bb" opacity="0.9"/>
+        <path d="M165 181C190 211 197 243 178 263C160 281 131 266 135 235C138 214 153 198 165 181Z" fill="url(#pujaLogoFlame)"/>
+        <path d="M121 265C139 281 187 281 205 265C193 302 134 302 121 265Z" fill="#ffdf75" opacity="0.9"/>
+      </svg>
+    </div>
+    <p class="puja-eyebrow">Featured Project — UX/UI Design · Devotional App</p>
+    <h2 class="puja-title">SHRI<br>MANDIR <span class="hindi">UI</span></h2>
+    <p class="puja-subtitle">Designing the visual language and blueprint for India's devotional super-app — where spirituality meets seamless digital experience.</p>
+  </div>
+
+  <!-- Marquee -->
+  <div class="puja-stripe">
+    <div class="puja-stripe-inner">
+      <span>UI/UX Design</span><span>·</span>
+      <span>Icon Design</span><span>·</span>
+      <span>User Flows</span><span>·</span>
+      <span>Visual Architecture</span><span>·</span>
+      <span>Devotional App</span><span>·</span>
+      <span>Puja Booking</span><span>·</span>
+      <span>Live Darshan</span><span>·</span>
+      <span>Design System</span><span>·</span>
+      <span>UI/UX Design</span><span>·</span>
+      <span>Icon Design</span><span>·</span>
+      <span>User Flows</span><span>·</span>
+      <span>Visual Architecture</span><span>·</span>
+      <span>Devotional App</span><span>·</span>
+      <span>Puja Booking</span><span>·</span>
+      <span>Live Darshan</span><span>·</span>
+      <span>Design System</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="puja-body">
+
+    <!-- Impact -->
+    <div class="puja-impact fade-in">
+      <div class="puja-impact-card">
+        <span class="puja-impact-num">6+</span>
+        <div class="puja-impact-label">Core App Features Designed</div>
+      </div>
+      <div class="puja-impact-card">
+        <span class="puja-impact-num">2</span>
+        <div class="puja-impact-label">Design Focus Areas</div>
+      </div>
+      <div class="puja-impact-card">
+        <span class="puja-impact-num">∞</span>
+        <div class="puja-impact-label">Devotees Served</div>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="puja-overview" style="margin-top:4rem">
+      <div class="fade-in">
+        <p class="section-label">Project Overview</p>
+        <h3 class="section-title" style="font-size:2rem; margin-bottom:1.5rem">What is Shri Mandir?</h3>
+        <div class="divider" style="background:var(--mandir-saffron)"></div>
+        <p>Shri Mandir brings devotional services into one app, from puja booking and live aarti to daily spiritual content.</p>
+        <p>The challenge was to make a sacred digital space feel trustworthy, clear, and easy for both young and older users.</p>
+        <div class="toran-pill-row">
+          <span class="pill" style="border-color:rgba(212,129,58,0.4); color:var(--mandir-saffron); background:rgba(212,129,58,0.06)">UI/UX</span>
+          <span class="pill" style="border-color:rgba(212,129,58,0.4); color:var(--mandir-saffron); background:rgba(212,129,58,0.06)">Devotional</span>
+          <span class="pill" style="border-color:rgba(212,129,58,0.4); color:var(--mandir-saffron); background:rgba(212,129,58,0.06)">Icon Design</span>
+          <span class="pill" style="border-color:rgba(212,129,58,0.4); color:var(--mandir-saffron); background:rgba(212,129,58,0.06)">Accessibility</span>
+        </div>
+      </div>
+      <div class="puja-features fade-in">
+        <h3>App Features</h3>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <h4>Online Puja & Chadhava Booking</h4>
+            <p>Book pujas and offerings at renowned temples from anywhere.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <h4>Live Darshan & Streaming</h4>
+            <p>Watch temple rituals and aarti live from the app.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <h4>Virtual Temple Setup</h4>
+            <p>Create a personal temple space for daily worship.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <h4>Devotional Content</h4>
+            <p>Aartis, bhajans, chalisas, and mantras in one library.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <h4>Astrology, Panchang & Horoscope</h4>
+            <p>Daily tithi, festival calendar, and horoscope features.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>
+            <h4>Articles & Learning Material</h4>
+            <p>Stories, guides, and learning material around Sanatan Dharma.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design Contribution -->
+    <div class="puja-contribution fade-in">
+      <h2>My Design Contribution</h2>
+      <div class="contribution-grid">
+        <div class="contrib-card">
+          <h4>Structuring the Experience</h4>
+          <p>I structured the app around a clean grid and accessible navigation, making a multi-feature devotional ecosystem easier to enter.</p>
+          <p style="margin-top:0.8rem">The onboarding follows: <em>Calm entry → Choice without pressure → Trust → Home clarity</em>.</p>
+        </div>
+        <div class="contrib-card">
+          <h4>Creating a Visual Dialect</h4>
+          <p>I designed icons inspired by temple bells, diyas, books, and sacred objects, keeping them culturally familiar and readable at app scale.</p>
+        </div>
+        <div class="contrib-card">
+          <h4>Onboarding Flow Architecture</h4>
+          <p>Mapped the flow from splash screen to language selection, sign-in, and home page with UX notes and component logic.</p>
+        </div>
+        <div class="contrib-card">
+          <h4>Iterative Design System</h4>
+          <p>Moved from early wireframes to high-fidelity screens while documenting components, type hierarchy, spacing, and color use.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Icon Design Showcase -->
+    <div class="design-system fade-in">
+      <h2>Icon Design System</h2>
+      <p style="color:var(--text-dim); font-size:0.88rem; margin-bottom:2rem; max-width:600px">A custom icon set for Shri Mandir, balancing cultural familiarity with small-screen clarity.</p>
+      <div class="puja-board-card">
+        <img src="./assets/icons.png" alt="Puja Path icon design exploration board">
+        <div class="puja-board-caption">Icon exploration board</div>
+      </div>
+    </div>
+
+    <!-- Whiteboard Workflow -->
+    <div class="puja-board-section fade-in">
+      <h2>Whiteboard Workflow</h2>
+      <p>Whiteboard maps used to structure onboarding, intent-based navigation, and the Learn & Grow journey before final screens.</p>
+      <div class="puja-board-grid">
+        <div class="puja-board-card">
+          <img src="./assets/w1.png" alt="Puja Path onboarding flow map whiteboard">
+          <div class="puja-board-caption">Onboarding flow map</div>
+        </div>
+        <div class="puja-board-card">
+          <img src="./assets/w2.png" alt="Puja Path Learn and Grow workflow whiteboard">
+          <div class="puja-board-caption">Learn and Grow workflow</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UX Flow -->
+    <div class="puja-process fade-in">
+      <h2>Onboarding Flow Design</h2>
+      <p style="color:var(--text-dim); font-size:0.88rem; margin-bottom:2.5rem; max-width:620px">The onboarding was designed around one principle: <em>Calm entry → Choice without pressure → Trust → Home clarity</em>.</p>
+      <div class="ux-flow">
+        <div class="ux-step">
+          <span class="step-num">01</span>
+          <h5>Splash Screen</h5>
+          <p>Brand first impression. Calm, sacred, immediate.</p>
+          <div class="ux-arrow" style="display:none"></div>
+        </div>
+        <div class="ux-step">
+          <span class="step-num">02</span>
+          <h5>Logo Tagline</h5>
+          <p>Establish identity and spiritual promise.</p>
+        </div>
+        <div class="ux-step">
+          <span class="step-num">03</span>
+          <h5>Language Select</h5>
+          <p>Accessibility first. Hindi, English & regional options.</p>
+        </div>
+        <div class="ux-step">
+          <span class="step-num">04</span>
+          <h5>Sign In</h5>
+          <p>Log in with number. Low friction. Familiar.</p>
+        </div>
+        <div class="ux-step">
+          <span class="step-num">05</span>
+          <h5>Home Page</h5>
+          <p>Personalized, clear, and immediately actionable.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- OTHER PROJECTS -->
+<div class="other-section" id="other">
+  <p class="section-label">More Work</p>
+  <h2>Other Projects</h2>
+  <div class="other-grid">
+    <div class="other-card other-card-wide">
+      <div class="other-card-media organic">
+        <img src="./assets/jowar pack.png" alt="Jowar Crunch multi millet packaging mockup">
+        <div class="other-card-media-stack">
+          <img class="logo-img" src="./assets/multimillet logo.png" alt="Nutri Millet Munch logo">
+          <img class="poster-img" src="./assets/jowar poster.jpg" alt="Jowar Crunch promotional poster">
+        </div>
+      </div>
+      <div class="other-card-tag">Branding & Packaging</div>
+      <h4>Jowar Crunch — Organic Food Brand</h4>
+      <p>Logo, packaging mockup, and quick-commerce poster for a healthy snack brand. Grain forms, warm browns, and green cues signal natural ingredients and shelf trust.</p>
+    </div>
+    <div class="other-card">
+      <div class="other-card-media split">
+        <img src="./assets/IMG_6243.jpg" alt="Rough sketch for elevator safety poster">
+        <img class="poster-img" src="./assets/poster.png" alt="Final elevator safety poster">
+      </div>
+      <div class="other-card-tag">Visual Communication</div>
+      <h4>Elevator Safety Campaign</h4>
+      <p>Lift safety poster developed from rough sketch to final graphic, using humor and familiar campus language to make the rule memorable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="footer-name">SAMAR<br>UDAWAT</div>
+  <div class="footer-contact">
+    <p>Open to opportunities</p>
+    <a href="mailto:Samarudawat52@gmail.com">Samarudawat52@gmail.com</a>
+    <div class="footer-handle">@_samar.creates_</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
